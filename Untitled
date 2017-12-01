@@ -1,0 +1,18 @@
+Frontend Cover Letter:
+
+Hi NBC team,
+
+I’m a web developer with experience in React-Redux, Javascript ES6, Ruby on Rails, and Node.js. Growing up in New York City, NBC at 30Rock has always been extremely exciting to me; your programs and your commitment to New York City makes it seem like a very special place to work. I believe my passion for NBC, as well as my advanced technical skills makes me a great fit.
+
+My most recent large-scale project was Poll Paradise, inspired by Poll Everywhere. Using React-Redux on the frontend, I created an agile UX. Through the Redux store and Action Creators, my front-end remembers which groups of questions a user has already opened as they navigate the site.
+
+My ability to manage the complexities of the Redux store minimized the number of network requests made, integrating new-user data directly into the user interface, mirroring those changes in the database. I massaged the data into successfully making one network request. To keep the frontend and backend in synch, my server is required to send back specifically formatted, interrelated JSON. By eagerly loading my querying results, I was able to eliminate any hidden N+1 queries, allowing for a scalable and quick backend.
+
+Using WebSockets, my polls update instantly, creating uninterrupted graphic representations of new-user input. For responding to the polls, I used local storage to ensure that a user only responds once. Through my use of the Redux store, local-storage, and Web Sockets, I created a lightning-fast, scalable live-updating poll-view.
+
+I am excited by the prospect of working at NBC helping you move forward in this fast-paced world. Attached is my personal website, with links to my GitHub and various projects. Thank you for your time, and I look forward to hearing from you soon.
+
+Best,
+
+Isaac Seessel
+www.isaacseessel.com

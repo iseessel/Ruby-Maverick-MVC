@@ -1,0 +1,11 @@
+<h1 class="message">
+  <%= @message %>
+</h1>
+
+<ul class="stack-trace">
+  <% @backtrace.each do |backtrace| %>
+  <li>
+    <%= backtrace %>
+  </li>
+  <% end %>
+</ul>
