@@ -27,7 +27,7 @@ Using instances of our database rows, interACT joins our controllers and our dat
 - Make a new class, that inherits from the SQLObject class.
 - Make sure to call finalize!, in order to define getter/setter methods for the column names!
 
-#### :finalize!
+#### ::finalize!
 - Defines the getter/setter methods for each column name
 - eg. If a cat has an age, owner_id, and color column, we can both change and access those column_names through our instance.
 
@@ -38,7 +38,7 @@ Using instances of our database rows, interACT joins our controllers and our dat
 - By default the table name will be snake case, pluralized of the model class name. eg. `class CuteCat`'s table name will be cute_cats'
 - If you want to alter your table name, you can use the `table_name=(name)` method.
 
-#### :belongs_to(name, options)
+#### ::belongs_to(name, options)
 - Used to create many to one associations. eg.`class Dogs < SQLObject belongs_to :owner` creates the method #owner for the dog class.
 
 - By default the foreign_key will be name_id. eg. `:owner_id`, the primary_key will be `:id` and the Class Name will be `name.camelcase`, eg. `Owner`
@@ -47,17 +47,18 @@ Using instances of our database rows, interACT joins our controllers and our dat
 `belongs_to :owner, foreign_key: :person_id, primary_key: :id, class_name: :Person`
 to overwrite these defaults
 
-#### :has_many(name, options)
+#### ::has_many(name, options)
 - Used to create one to many associations. eg. `class Owner < SQLObject has_many :dogs` creates the method #dogs for the dog class
 
 - Defaults follow the same conventions as outlined above(#belongs_to).
 
-#### has_one_through(name, through_name, source_name) 
+#### ::has_one_through(name, through_name, source_name)
+- Used to create one to many associations when the tables do not join directly. eg. Pet belongs to an owner, Owner belongs to a country, therefore Pet belongs to a country. `class Pet <SQLObject has_one_through :country, :owner, :country`
 
-#### :all
+#### ::all
 - Returns all rows in the appropriate table as an array of SQLObjects.
 
-#### :find(id_num)
+#### ::find(id_num)
 - Returns the first instance as a SQLObject.
 
 #### #attributes
