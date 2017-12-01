@@ -4,5 +4,5 @@ views/*
 spec/*
 notes.txt
 .rspec
-lib/interACT/spec
+lib/interACT/spec/*
 lib/interACT/cats.sql
