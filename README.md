@@ -18,10 +18,23 @@ Maverick(MVC) controllers are in charge of handling an appropriate HTTP request.
 - Create your appropriate controller methods (make sure you have appropriate routes for them!)
 
 #### #render(template_name)
-- Sends back a response, rendering the appropriate template found in the file tree: `./views/#controller_name/template_name.html.erb`
+- Sends back a response, rendering the appropriate template found in the file tree at: `./views/#controller_name/template_name.html.erb`
+- NB: If you don't call render in your controller method, it will automatically render `./views/#controller_name/method_name.html.erb`
 
 #### #redirect_to(url)
-- Sends back a response, redirecting the requester to the url.
+- Redirects the requester to the url.
 
-#### #session
-- Creates a session object, consisting of the cookies brought in by our user. We can set our users session cookies using `session[]=` or access into our users session using `session[]`.
+#### #session[key], #session[key]=
+- Ability to access and set the cookies of our user. Key may be a string or a symbol. Session objects are hash-like.
+
+#### #flash[key], #flash[key]=
+- Sets/access a cookie that will persist for ONE response cycle. Flash objects are hash-like.
+
+#### #flash.now[key], #flash.now[key]
+-  Sets a key value pair, that can be access during this response cycle.
+
+#### ::protect_from_forgery
+- Protects website from CSRF attacks, using requiring an authenticity token in the form and a user's cookie. HIGHLY SUGGESTED
+
+#### #form_authenticity_token
+- Generates a form authenticity token. You must use these in your form if you are using ::protect_from_forgery

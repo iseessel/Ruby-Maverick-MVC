@@ -68,7 +68,7 @@ class ControllerBase
   def invoke_action(name)
     check_authenticity_token unless req.request_method == "GET"
     self.send(name)
-  # allows for default behavior
+  # allows for default behavior =
     render(name) unless @already_built_response
   end
 
