@@ -44,7 +44,7 @@ class Router
   end
 
   # make methods that when called creates a route.
-  [:get, :post, :put, :delete, :patch, :delete].each do |http_method|
+  [:get, :post, :put, :delete, :patch].each do |http_method|
     define_method(http_method) do |pattern, controller_class, action_name|
       add_route(pattern, http_method, controller_class, action_name)
     end
