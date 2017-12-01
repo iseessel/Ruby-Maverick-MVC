@@ -4,6 +4,75 @@
 Ruby Maverick(MVC) is a light-weight MVC built in ruby, inspired by Ruby on Rails. This API is currently in production.
 
 ## Documentation
+
+### Database Connection
+
+#### Creating Your Database
+Using the DBConnection class, you can easily create a new database.
+
+- In `lib/interACT` create a new file `create_my_database.sql`, wherein you write SQL for your database.
+
+- In `lib/interACT/db_connection.rb` modify the constants and the appropriate filenames with your new files `create_my_database.sql` and  `create_my_database.db`
+
+- ONLY use the `DBConnection::reset` method, if you want to reset your database.
+
+#### Adding New Tables
+You can call DBConnection.execute("SQL COMMANDS HERE") from the ruby console to add new columns to your database. Do NOT edit your create_my_database.sql, as this code will only be run once.
+
+### interACT Models
+Using instances of our database rows, interACT joins our controllers and our database.
+
+#### Creating a Model
+- Make sure you have an appropriate table in your database before you create a model.
+- Make a new class, that inherits from the SQLObject class.
+- Make sure to call finalize!, in order to define getter/setter methods for the column names!
+
+#### :finalize!
+- Defines the getter/setter methods for each column name
+- eg. If a cat has an age, owner_id, and color column, we can both change and access those column_names through our instance.
+
+#### ::columns
+- Returns array of column names
+
+#### ::table_name, ::table_name=(name)
+- By default the table name will be snake case, pluralized of the model class name. eg. `class CuteCat`'s table name will be cute_cats'
+- If you want to alter your table name, you can use the `table_name=(name)` method.
+
+#### :belongs_to(name, options)
+- Used to create many to one associations. eg.`class Dogs < SQLObject belongs_to :owner` creates the method #owner for the dog class.
+
+- By default the foreign_key will be name_id. eg. `:owner_id`, the primary_key will be `:id` and the Class Name will be `name.camelcase`, eg. `Owner`
+
+- If you want to customize these you can pass in an options hash of the form:
+`belongs_to :owner, foreign_key: :person_id, primary_key: :id, class_name: :Person`
+to overwrite these defaults
+
+#### :has_many(name, options)
+- Used to create one to many associations. eg. `class Owner < SQLObject has_many :dogs` creates the method #dogs for the dog class
+
+- Defaults follow the same conventions as outlined above(#belongs_to).
+
+#### has_one_through(name, through_name, source_name) 
+
+#### :all
+- Returns all rows in the appropriate table as an array of SQLObjects.
+
+#### :find(id_num)
+- Returns the first instance as a SQLObject.
+
+#### #attributes
+- Returns a hash of all the attributes associated with that instance.
+
+#### #attribute_values
+- Returns an array of each column name associated with that instance.
+
+#### #save
+- Persists changes of the model instance to the database.
+
+#### #where(params)
+- Returns an array of SQLObjects, that match the given conditions.
+- eg. Cat.where(age: 2); returns all cats whose age is 2.
+
 ### Routes
 Ruby Maverick(MVC) routes receive an HTTP request and find the appropriate controller. Maverick(MVC) currently supports GET, POST, PUT, DELETE, and PATCH requests.
 
@@ -16,6 +85,12 @@ Maverick(MVC) controllers are in charge of handling an appropriate HTTP request.
 
 - Create a Controller Class that inherits from ControllerBase
 - Create your appropriate controller methods (make sure you have appropriate routes for them!)
+
+#### ::protect_from_forgery
+- Protects website from CSRF attacks, using requiring an authenticity token in the form and a user's cookie. HIGHLY SUGGESTED
+
+#### #form_authenticity_token
+- Generates a form authenticity token. You must use these in your form if you are using ::protect_from_forgery
 
 #### #render(template_name)
 - Sends back a response, rendering the appropriate template found in the file tree at: `./views/#controller_name/template_name.html.erb`
@@ -33,8 +108,10 @@ Maverick(MVC) controllers are in charge of handling an appropriate HTTP request.
 #### #flash.now[key], #flash.now[key]
 -  Sets a key value pair, that can be access during this response cycle.
 
-#### ::protect_from_forgery
-- Protects website from CSRF attacks, using requiring an authenticity token in the form and a user's cookie. HIGHLY SUGGESTED
+### Views
+- Views must be in the file tree as follows: `./views/#controller_name/template_name.html.erb`. This will allow your controller to find the appropriate view.
+- Views can support html, and ruby embedded in erb tags.
 
-#### #form_authenticity_token
-- Generates a form authenticity token. You must use these in your form if you are using ::protect_from_forgery
+### Static Assets
+- Static assets(eg. .txt, .jpg, .zip, .pdf, etc., )for use in your view must be in the file tree as follows: `./public/file_name.extension`
+- Files can be accessed './'

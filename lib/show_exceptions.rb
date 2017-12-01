@@ -19,7 +19,8 @@ class ShowExceptions
   private
 
   # Read our error rendering template bound to this context, so we have access
-  # to @message and @backtrace. 
+  # to @message and @backtrace.
+  
   def render_exception(e)
     @message = e.message
     @backtrace = e.backtrace

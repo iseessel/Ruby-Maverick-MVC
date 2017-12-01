@@ -4,6 +4,17 @@ require 'byebug'
 
 class SQLObject
 
+  #Upon initialization, create the appropriate attributes hash for
+  #the SQL instance.
+  def initialize(params = {})
+    params.each do |column_name, value|
+      unless self.class.columns.include?(column_name.to_sym)
+        raise  "unknown attribute '#{column_name}'"
+      end
+      self.send("#{column_name}=", value)
+    end
+  end
+
   # DBConnection's #execute2 returns an array, whos first element
   # is a list of the column names.
   def self.columns
@@ -18,18 +29,19 @@ class SQLObject
   end
 
   def self.finalize!
-    # Defining getter/setter methods for each column name
+
+  # Defining getter/setter methods for each column name
     self.columns.each do |column_sym|
       define_method(column_sym) { attributes[column_sym] }
       define_method("#{column_sym}=") { |value| attributes[column_sym] = value}
     end
   end
 
-  def self.table_name=(table_name)
+  def self.table_name=(table_name = @table)
     @table_name = table_name
   end
 
-  def self.table_name(table_name = @table)
+  def self.table_name
     @table_name ||= self.to_s.tableize
   end
 
@@ -41,13 +53,6 @@ class SQLObject
         #{self.table_name}
     SQL
     self.parse_all(results_hash)
-  end
-
-  #Create an array of new SQL objects from the result of the queery.
-  def self.parse_all(results)
-    parsed = results.map do |result|
-      self.new(result)
-    end
   end
 
   def self.find(id_num)
@@ -66,17 +71,6 @@ class SQLObject
     end
   end
 
-  #Upon initialization, create the appropriate attributes hash for
-  #the SQL instance.f
-  def initialize(params = {})
-    params.each do |column_name, value|
-      unless self.class.columns.include?(column_name.to_sym)
-        raise  "unknown attribute '#{column_name}'"
-      end
-      self.send("#{column_name}=", value)
-    end
-  end
-
   # seperates instance variables associated
   # with the database and those that are not.
   def attributes
@@ -89,6 +83,18 @@ class SQLObject
     end
   end
 
+  def save
+    self.id.nil? ? self.insert : self.update
+  end
+
+  private
+
+  #Create an array of new SQL objects from the result of the queery.
+  def self.parse_all(results)
+    parsed = results.map do |result|
+      self.new(result)
+    end
+  end
 
   def insert
     columns = self.class.columns
@@ -121,9 +127,4 @@ class SQLObject
       id = ?
     SQL
   end
-
-  def save
-    self.id.nil? ? self.insert : self.update
-  end
-
 end
