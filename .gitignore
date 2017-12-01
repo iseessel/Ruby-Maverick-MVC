@@ -4,3 +4,4 @@ views/*
 spec/*
 notes.txt
 .rspec
+./interACT/spec
