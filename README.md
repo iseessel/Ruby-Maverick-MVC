@@ -100,6 +100,9 @@ Maverick(MVC) controllers are in charge of handling an appropriate HTTP request.
 #### #redirect_to(url)
 - Redirects the requester to the url.
 
+#### #params
+- Access to parameters of the request, including the URL wildcards and the body of the request.
+
 #### #session[key], #session[key]=
 - Ability to access and set the cookies of our user. Key may be a string or a symbol. Session objects are hash-like.
 
