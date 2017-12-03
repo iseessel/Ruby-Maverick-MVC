@@ -9,11 +9,11 @@ Ruby Maverick(MVC) is a light-weight MVC built in ruby, inspired by Ruby on Rail
 ## Documentation
 
 ### File Structure
-- Routes and App are created in `/app`
-- HTML/ERB Files are created in `/views/controller_name/action_name.html.erb`
-- Model Classes are created in  `/models/model_name`
-- Controllers are created in `/controllers/controller_name`
-- Database initializations are created in `/lib/interACT/database.sql` and `/database.db`
+- Routes and App are created under `/app`
+- HTML/ERB Files are created under `/views/controller_name/your_file_name.html.erb`
+- Model Classes are created under  `/models/your_file_name.rb`
+- Controllers are created under `/controllers/your_file_name.rb`
+- Database initializations are created under `/lib/interACT/your_file_name.sql` and `/your_file_name.db`
 
 ### Database Connection
 
@@ -96,6 +96,7 @@ Ruby Maverick(MVC) routes receive an HTTP request and find the appropriate contr
 - Create a new Router Object. This object will be in charge of handling your routes.
 - Draw your routes with the HTTP method, regex object that will match the path,  controller to send the request to, and the appropriate method within the controller
 
+ex.
 ![router](read-me-images/app.png)
 
 ### Controllers
