@@ -1,0 +1,28 @@
+<h1>Here are your Todos</h1>
+
+<img src="/public/todo_list.jpg" alt="">
+
+<% if flash[:errors] %>
+  <ul class="errors">
+    <% flash[:errors].each do |error| %>
+      <li>
+        <%= error %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<ul class="todos">
+  <% @todos.each do |todo| %>
+  <li class="todo">
+
+    <a href="todos/<%= todo.id %>">
+      <%= todo.name %>
+    </a>
+  </li>
+  <% end %>
+</ul>
+
+<a class="make-todo" href="todos/new">
+  Make a new Todo
+</a>

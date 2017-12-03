@@ -1,9 +1,12 @@
 require_relative 'db_connection'
+require_relative 'modules/associatable'
+require_relative 'modules/searchable'
 require 'active_support/inflector'
 require 'byebug'
 
 class SQLObject
-
+  extend Associatable
+  extend Searchable
   #Upon initialization, create the appropriate attributes hash for
   #the SQL instance.
   def initialize(params = {})
@@ -86,8 +89,6 @@ class SQLObject
   def save
     self.id.nil? ? self.insert : self.update
   end
-
-  private
 
   #Create an array of new SQL objects from the result of the queery.
   def self.parse_all(results)

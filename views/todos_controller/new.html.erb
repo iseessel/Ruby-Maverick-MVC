@@ -1,0 +1,28 @@
+<h1>Please Enter a new Todo!</h1>
+
+<form class="new-todo" action="/todos" method="post">
+
+  <% if flash["errors"] %>
+  <ul>
+    <% flash["errors"].each do |error| %>
+      <li>
+        <%= error %>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label>Body
+    <input type="text" name="todo[body]" value="">
+  </label>
+
+  <button type="submit">
+    Submit
+  </button>
+
+</form>
+
+<a href="/todos">Go back to all Todos.</a>

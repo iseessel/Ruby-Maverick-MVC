@@ -1,0 +1,36 @@
+<h1>This is your ToDo!</h1>
+
+<p class="todo-name">
+  <%= @todo.name %>
+</p>
+
+
+
+<h4>Notes</h4>
+  <% if flash["comment-errors"] %>
+    <ul>
+      <% flash["comment-errors"].each do |error| %>
+      <li>
+        <%= error %>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
+
+<form class="" action="/todos/<%= @todo.id %>/comments" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="text" name="comment[body]" value="">
+  <button type="submit" name="button">
+    Submit
+  </button>
+</form>
+
+<ul class="todo-comments">
+  <% @comments.each do |comment| %>
+  <li>
+    <%= comment.body %>
+  </li>
+  <% end %>
+</ul>
+
+<a href="/todos">Go back to all Todos.</a>

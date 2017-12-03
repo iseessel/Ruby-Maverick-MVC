@@ -1,6 +1,4 @@
 bin/*
-public/*
-views/*
 spec/*
 notes.txt
 .rspec

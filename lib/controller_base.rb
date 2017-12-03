@@ -18,7 +18,7 @@ class ControllerBase
     # store in a class variable so that every controller either protects from forgery or not.
     @@protect_from_forgery ||= false
   end
-
+  
   # Helper method to alias @already_built_response
   def already_built_response?
     @already_built_response
@@ -51,7 +51,7 @@ class ControllerBase
     flash.store_flash(@res)
     controller_name = "#{self.class}".underscore
     template = "#{template_name}".underscore
-    file_path = "views/#{controller_name}/#{template}.html.erb"
+    file_path = "../views/#{controller_name}/#{template}.html.erb"
     erb = ERB.new(File.read(file_path))
     render_content(erb.result(binding),'text/html')
   end
