@@ -5,7 +5,6 @@ require_relative '../lib/static'
 require_relative '../controllers/all_controllers'
 
 router = Router.new
-
 router.draw do
   get(Regexp.new("^/todos$"), TodosController, :index)
   get(Regexp.new("^/todos/new$"), TodosController, :new)

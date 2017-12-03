@@ -5,6 +5,13 @@ Ruby Maverick(MVC) is a light-weight MVC built in ruby, inspired by Ruby on Rail
 
 ## Documentation
 
+### File Structure
+- Routes and App are created in `/app`
+- HTML/ERB Files are created in `/views/controller_name/action_name.html.erb`
+- Model Classes are created in  `/models/model_name`
+- Controllers are created in `/controllers/controller_name`
+- Database initializations are created in `/lib/interACT/database.sql` and `/database.db`
+
 ### Database Connection
 
 #### Creating Your Database
@@ -16,6 +23,8 @@ Using the DBConnection class, you can easily create a new database.
 
 - ONLY use the `DBConnection::reset` method, if you want to reset your database.
 
+![controller](read-me-images/sql_seeds.png)
+
 #### Adding New Tables
 You can call DBConnection.execute("SQL COMMANDS HERE") from the ruby console to add new columns to your database. Do NOT edit your create_my_database.sql, as this code will only be run once.
 
@@ -26,6 +35,8 @@ Using instances of our database rows, interACT joins our controllers and our dat
 - Make sure you have an appropriate table in your database before you create a model.
 - Make a new class, that inherits from the SQLObject class.
 - Make sure to call finalize!, in order to define getter/setter methods for the column names!
+
+![model](read-me-images/model.png)
 
 #### ::finalize!
 - Defines the getter/setter methods for each column name
@@ -79,13 +90,16 @@ Ruby Maverick(MVC) routes receive an HTTP request and find the appropriate contr
 
 - Create a new Router Object. This object will be in charge of handling your routes.
 - Draw your routes with the HTTP method, regex object that will match the path,  controller to send the request to, and the appropriate method within the controller
-![router](read-me-images/router.png)
+
+![router](read-me-images/app.png)
 
 ### Controllers
 Maverick(MVC) controllers are in charge of handling an appropriate HTTP request. All controllers must inherit from ControllerBase; as this will provide each controller with useful methods.
 
 - Create a Controller Class that inherits from ControllerBase
 - Create your appropriate controller methods (make sure you have appropriate routes for them!)
+
+![controller](read-me-images/controller.png)
 
 #### ::protect_from_forgery
 - Protects website from CSRF attacks, using requiring an authenticity token in the form and a user's cookie. HIGHLY SUGGESTED
@@ -115,6 +129,8 @@ Maverick(MVC) controllers are in charge of handling an appropriate HTTP request.
 ### Views
 - Views must be in the file tree as follows: `./views/#controller_name/template_name.html.erb`. This will allow your controller to find the appropriate view.
 - Views can support html, and ruby embedded in erb tags.
+
+![views](read-me-images/html:erb.png)
 
 ### Static Assets
 - Static assets(eg. .txt, .jpg, .zip, .pdf, etc., )for use in your view must be in the file tree as follows: `./public/file_name.extension`
