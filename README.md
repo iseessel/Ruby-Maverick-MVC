@@ -41,7 +41,7 @@ Using instances of our database rows, interACT joins our controllers and our dat
 - Make sure to call finalize!, in order to define getter/setter methods for the column names!
 
 ex.
-![model](read-me-images/model.png)
+![model](read-me-images/models.png)
 
 #### ::finalize!
 - Defines the getter/setter methods for each column name
