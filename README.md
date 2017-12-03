@@ -23,6 +23,7 @@ Using the DBConnection class, you can easily create a new database.
 
 - ONLY use the `DBConnection::reset` method, if you want to reset your database.
 
+ex.
 ![controller](read-me-images/sql_seeds.png)
 
 #### Adding New Tables
@@ -36,6 +37,7 @@ Using instances of our database rows, interACT joins our controllers and our dat
 - Make a new class, that inherits from the SQLObject class.
 - Make sure to call finalize!, in order to define getter/setter methods for the column names!
 
+ex.
 ![model](read-me-images/model.png)
 
 #### ::finalize!
@@ -99,6 +101,7 @@ Maverick(MVC) controllers are in charge of handling an appropriate HTTP request.
 - Create a Controller Class that inherits from ControllerBase
 - Create your appropriate controller methods (make sure you have appropriate routes for them!)
 
+ex.
 ![controller](read-me-images/controller.png)
 
 #### ::protect_from_forgery
@@ -130,6 +133,7 @@ Maverick(MVC) controllers are in charge of handling an appropriate HTTP request.
 - Views must be in the file tree as follows: `./views/#controller_name/template_name.html.erb`. This will allow your controller to find the appropriate view.
 - Views can support html, and ruby embedded in erb tags.
 
+ex.
 ![views](read-me-images/html:erb.png)
 
 ### Static Assets
