@@ -4,3 +4,4 @@ notes.txt
 .rspec
 lib/interACT/spec/*
 lib/interACT/cats.sql
+/read-me-images/*
