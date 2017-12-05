@@ -147,5 +147,5 @@ ex.
 - ControllerBase#has_many_through association.
 - "Stackable" queries that do not get run until needed.
 - Model-level validations and a validator class
-- Includes and joins methos with prefetching. 
+- Includes and joins methods with prefetching. 
 - link_to, button_to, and url helper methods for the views and controllers.
