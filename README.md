@@ -141,5 +141,4 @@ ex.
 ![views](read-me-images/html:erb.png)
 
 ### Static Assets
-- Static assets(eg. .txt, .jpg, .zip, .pdf, etc., )for use in your view must be in the file tree as follows: `./public/file_name.extension`
-- Files can be accessed './'
+- Static assets(eg. .txt, .jpg, .zip, .pdf, etc., ) for use in your view must be in the file tree as follows: `./public/file_name.extension`
