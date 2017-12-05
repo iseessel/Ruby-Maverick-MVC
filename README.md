@@ -141,4 +141,11 @@ ex.
 ![views](read-me-images/html:erb.png)
 
 ### Static Assets
-- Static assets(eg. .txt, .jpg, .zip, .pdf, etc., ) for use in your view must be in the file tree as follows: `./public/file_name.extension`
+- Static assets(eg. .txt, .jpg, .zip, .pdf, etc.,) for use in your view must be in the file tree as follows: `./public/file_name.extension`
+
+### Features To Be Added
+- ControllerBase#has_many_through association.
+- "Stackable" queries that do not get run until needed.
+- Model-level validations and a validator class
+- Includes and joins methos with prefetching. 
+- link_to, button_to, and url helper methods for the views and controllers.
