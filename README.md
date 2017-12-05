@@ -1,7 +1,7 @@
 # README
 
 ## Overview
-Ruby Maverick(MVC) is a light-weight MVC built in ruby, inspired by Ruby on Rails. This API is currently in production.
+Ruby Maverick(MVC) is a light-weight MVC built in Ruby, inspired by Ruby on Rails. This API is currently in production.
 1. Clone Repo
 2. Create your database, models, controllers, and routes.
 3. Run $ bundle exec ruby app.rb in the app directory in order to run your server locally.
@@ -147,5 +147,5 @@ ex.
 - ControllerBase#has_many_through association.
 - "Stackable" queries that do not get run until needed.
 - Model-level validations and a validator class
-- Includes and joins methods with prefetching. 
+- Includes and joins methods with prefetching.
 - link_to, button_to, and url helper methods for the views and controllers.
